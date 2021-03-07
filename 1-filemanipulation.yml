@@ -1,20 +1,19 @@
-- name: play for file management
-  hosts: all
-  become: yes
+- name: playbook for file manipulation
+  hosts: all   # all clients
+  become: yes 
   tasks:
-    # create file `/tmp/hello.txt` with some content
   - name: hello file is copied
-    copy:
-      content: "Hello here"
-      dest: /tmp/monday.txt
+    copy:  #copy module
+      content: "hello from monday evening v2"  #like echo in linux
+      dest: /tmp/monday3.txt 
   - name: hi file is copied
     copy:
-      content: "Hi there"
-      dest: /tmp/monday2.txt
-  - name: archive hh is created
+      content: "Hi here v2"  #like echo in linux
+      dest: /tmp/monday4.txt
+  - name: archive hh is created # hh.zip using ansible archive module
     archive:
       path:
-      - /tmp/monday.txt
-      - /tmp/monday2.txt
-      dest: /tmp/hh.zip
-      format: zip
+      - /tmp/monday3.txt
+      - /tmp/monday4.txt
+      dest: /tmp/hh2.zip  #hh2.zip will consist of monday3.txt and monday4.txt files zipped.
+      format: zip  # you provide format here ,if you say "format: gz" it will archive as hh.gz

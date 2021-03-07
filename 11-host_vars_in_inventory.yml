@@ -1,14 +1,14 @@
-- hosts: all
+- hosts: web,db
   become: yes
   vars:
     webserver: httpd
     webserver_root_dir: /var/www/html
   tasks:
-  - name: Install apache packages
-    yum:
+  - name: webserver is installed
+    package:
       name: "{{ webserver }}"
       state: present
-  - name: ensure httpd is running
+  - name: webserver is up
     service:
       name: "{{ webserver }}"
       state: started
@@ -17,8 +17,15 @@
     file:
       path: "{{ webserver_root_dir }}"
       state: directory
-  - name: static website is deployed
-    uri:
-      url: https://raw.githubusercontent.com/sprintqaDevOps/ansible/main/playbooks/index.html
-      dest: "{{ webserver_root_dir }}"
+  - name: print custom var
+    debug:
+      msg: "{{ today }}"
 
+
+# in the inventory file define your group specific vars
+
+#[web:vars]
+#custom_var=wednesdayWEB
+
+#[db:vars]
+#custom_var=wednesdayDB
