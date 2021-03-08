@@ -1,3 +1,9 @@
+#when you wanna use same playbook in different environment,prod,QA,or Dev. you dont wanna change the variable you already set.
+#instead you can change variables.yml file.this yml file will be specific to that environment.like vars_QA.yml  ,vars_Prod.yml .
+# every env server has different vars.for ex;webserver var will have package_name: httpd but dbserver will have package_name: mysql 
+# but you wanna use same playbook, this is the idea.it will be more reusable. with external var file and ansible roles u can reuse the same playbook.
+
+
 - hosts: db   # webserver var is missing in template,because we want to pass it as a CLI input variable. you dont wanna put your db url and password in template , you can pass it as a CLI variable
   become: yes  # it is a good practice when u need to pass a parameter and dont put in template for security .
   vars:   #this is inline variable
@@ -14,7 +20,7 @@
       enabled: yes
   - name: webserver root directory exists
     file:
-      path: "{{ webserver_root_dir }}"
+      path: "{{ webserver_root_dir }}" 
       state: directory
   - name: static website is deployed
     uri:
