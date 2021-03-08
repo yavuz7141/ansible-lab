@@ -8,7 +8,7 @@
       dest: /tmp/monday3.txt 
   - name: hi file is copied
     copy:
-      content: "Hi here v2"  #like echo in linux
+      content: "Hi there v2"  #like echo in linux
       dest: /tmp/monday4.txt
   - name: archive hh is created # hh.zip using ansible archive module
     archive:
