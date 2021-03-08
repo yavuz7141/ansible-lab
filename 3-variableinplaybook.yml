@@ -1,12 +1,12 @@
-- hosts: db
-  become: yes
+- hosts: db  #db server group
+  become: yes   # run as root or wheel group user
   vars:
-    webserver: httpd
-    webserver_root_dir: /var/www/html
+    webserver: httpd   #key:value, variable is webserver, instead of using httpd, variables in this template called inline variables.
+    webserver_root_dir: /var/www/html # or instead of using /var/www/html we will use variable
   tasks:
   - name: Install apache packages
     yum:
-      name: "{{ webserver }}"
+      name: "{{ webserver }}" #we use inline variable here
       state: present
   - name: ensure httpd is running
     service:
@@ -15,11 +15,11 @@
       enabled: yes
   - name: webserver root directory exists
     file:
-      path: "{{ webserver_root_dir }}"
+      path: "{{ webserver_root_dir }}" #here we refer /var/www/html by using inline variable
       state: directory
   - name: static website is deployed
     uri:
-      url: https://raw.githubusercontent.com/sprintqaDevOps/ansible/main/playbooks/index.html
+      url: https://raw.githubusercontent.com/yavuz7141/ansible-lab/main/index.html
       dest: "{{ webserver_root_dir }}"
   - name: debug
     debug:
