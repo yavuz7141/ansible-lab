@@ -4,16 +4,16 @@
   tasks:
   - name: hello file is copied
     copy:  #copy module
-      content: "hello from monday evening v2"  #like echo in linux
-      dest: /tmp/monday3.txt 
+      content: "hello from monday evening v10"  #like echo in linux
+      dest: /tmp/monday10.txt 
   - name: hi file is copied
     copy:
-      content: "Hi there v2"  #like echo in linux
-      dest: /tmp/monday4.txt
+      content: "Hi there v10"  #like echo in linux
+      dest: /tmp/monday11.txt
   - name: archive hh is created # hh.zip using ansible archive module
     archive:
       path:
-      - /tmp/monday3.txt
-      - /tmp/monday4.txt
-      dest: /tmp/hh2.zip  #hh2.zip will consist of monday3.txt and monday4.txt files zipped.
+      - /tmp/monday10.txt
+      - /tmp/monday11.txt
+      dest: /tmp/hh10.zip  #hh2.zip will consist of monday3.txt and monday4.txt files zipped.
       format: zip  # you provide format here ,if you say "format: gz" it will archive as hh.gz
