@@ -1,6 +1,6 @@
-- hosts: db
-  become: yes
-  vars:
+- hosts: db   # webserver var is missing in template,because we want to pass it as a CLI input variable. you dont wanna put your db url and password in template , you can pass it as a CLI variable
+  become: yes  # it is a good practice when u need to pass a parameter and dont put in template for security .
+  vars:   #this is inline variable
     webserver_root_dir: /var/www/html
   tasks:
   - name: Install apache packages
