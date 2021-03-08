@@ -29,5 +29,5 @@
   - name: debug
     debug:
       msg: "webserver is {{ webserver }}"
-      # you need to run this command in ansibleengine parent "ansible-playbook playbookname.yml --extra-vars webserver=httpd" we refer webserver as httpd. 
+      # you need to run this command in ansibleengine parent "ansible-playbook playbookname.yml --extra-vars webserver=httpd" to refer webserver as httpd. 
       # in our case command is this "ansible-playbook ansible-lab/5-vars_from_cli.yml --extra-vars webserver=httpd "
