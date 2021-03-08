@@ -1,4 +1,6 @@
-- hosts: db
+#  this template file and variables.yml  file has to be in the same folder  beacuse we wanna use variables.yml file from this template.
+# ansible will now extract the variables from the variables.yml file.{{ package_name }} and {{ destination }} are not here but in variables.yml file.
+- hosts: db  
   become: yes
   vars_files:
     - variables.yml
