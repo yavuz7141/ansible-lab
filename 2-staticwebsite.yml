@@ -6,15 +6,15 @@
       name: httpd  #package
       state: present  #install httpd
   - name: ensure httpd is running  # 2nd play
-    service:  # it is the service i wanna start
+    service:  # service module, it is the service i wanna start
       name: httpd
       state: started
       enabled: yes
   - name: webserver root directory exists  # 3rd play
-    file:  #create the file
+    file:  # file module, create the file
       path: /var/www/html
       state: directory
   - name: static website is deployed ## 4th play
-    uri:
+    uri: #uri module , i wanna get index.html using another source below
       url: https://raw.githubusercontent.com/yavuz7141/ansible-lab/main/index.html
       dest: /var/www/html
