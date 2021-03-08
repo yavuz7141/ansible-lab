@@ -1,8 +1,8 @@
 - hosts: db
   become: yes
   vars:
-    webserver:
-      type: httpd
+    webserver: #this is parent variable,under this line (type, root_dir , abc)  are child variables, variables under variable.
+      type: httpd   # key:value
       root_dir: /var/www/html
       abc: /var/www/html
     dbserver:
@@ -11,11 +11,11 @@
   tasks:
   - name: Install apache packages
     yum:
-      name: "{{ webserver.type }}"
+      name: "{{ webserver.type }}" # u have to indicate the child var under the parent var. "{{ webserver }}" wont work in nested vars.
       state: present
   - name: ensure httpd is running
-    service:
-      name: "{{ webserver.type }}"
+    service: #service is httpd, thats why type is httpd so it has to be webserver.type below.
+      name: "{{ webserver.type }}" # u have to indicate the child var under the parent var
       state: started
       enabled: yes
   - name: webserver root directory exists
@@ -24,8 +24,9 @@
       state: directory
   - name: static website is deployed
     uri:
-      url: https://raw.githubusercontent.com/sprintqaDevOps/ansible/main/playbooks/index.html
+      url: https://raw.githubusercontent.com/yavuz7141/ansible-lab/main/index.html
       dest: "{{ webserver.root_dir }}"
   - name: debug var nested object
     debug:
       msg: "webserver is {{ webserver['type'] }} and location folder is {{ webserver.root_dir }}"
+# these are 2 different ways to print. {{ webserver['type'] }} is same as "{{ webserver.type }}"
