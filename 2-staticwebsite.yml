@@ -1,20 +1,20 @@
-- hosts: all
+- hosts: web
   become: yes
   tasks:
-  - name: Install apache packages
-    yum:
-      name: httpd
-      state: present
-  - name: ensure httpd is running
-    service:
+  - name: Install apache packages  # 1st play
+    yum: #yum module
+      name: httpd  #package
+      state: present  #install httpd
+  - name: ensure httpd is running  # 2nd play
+    service:  # it is the service i wanna start
       name: httpd
       state: started
       enabled: yes
-  - name: webserver root directory exists
-    file:
+  - name: webserver root directory exists  # 3rd play
+    file:  #create the file
       path: /var/www/html
       state: directory
-  - name: static website is deployed
+  - name: static website is deployed ## 4th play
     uri:
-      url: https://raw.githubusercontent.com/sprintqaDevOps/ansible-lab/main/index.html
+      url: https://raw.githubusercontent.com/yavuz7141/ansible-lab/main/index.html
       dest: /var/www/html
