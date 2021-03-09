@@ -12,6 +12,4 @@
       wait: yes
       group_id:
         - devops
-      tags: 
-        - Environment: web
-        - Name: clientnode5
+     
