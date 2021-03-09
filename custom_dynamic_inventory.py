@@ -1,6 +1,6 @@
 # Use python script to build your custom inventory from dynamic inventory(from  ec2.py,extract EC2s based on taggings) you get from ansible cli
 #!/bin/python   #python is alraedy installed in servers,thats why we use python interpreter.check which python, which bash
-import sys  #import sys module to exit, it lets us access system-specific parameters ans functions
+import sys  #import sys module to exit, it lets us access system-specific parameters and functions
 import json # we get facts(list of IPs,ASG..etc) in json format,we need to print in json format because ansible understands json.
 
 try:
