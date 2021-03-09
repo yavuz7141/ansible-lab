@@ -9,5 +9,4 @@
       image: ami-013570d303005cc7e
       key_name: newdevops
       region: us-east-1
-      tags:
-        Environment: web
+      wait: yes
