@@ -29,7 +29,5 @@ def main():
                }
    print(json.dumps(all_groups))
 
-# if __name__=="__main__":
-#    main()
-
-#
+if __name__=="__main__":
+   main()
