@@ -4,13 +4,13 @@
   - name: httpd is installed
     package:
       name: httpd
-      state: present
-    register: httpd_installation_output
+      state: present #install
+    register: httpd_installation_output  #it will save the output,like return in python
   - name: print in terminal
     debug:
-      var: httpd_installation_output
+      var: httpd_installation_output #declare as a variable,we just can print,u can put msg instead var if u like also.
   
-  - name: copy the output
+  - name: copy the output #I put 8-register.yml as a file name instead copy output
     copy:
-      content: "{{ httpd_installation_output }}"
+      content: "{{ httpd_installation_output }}" #this is env variable instead of text
       dest: /tmp/registered-vars-ouput
