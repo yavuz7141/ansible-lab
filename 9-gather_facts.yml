@@ -3,4 +3,8 @@
   tasks:
   - name: print ansible_facts
     debug:
-      var: ansible_facts
+      var: ansible_facts # declared as variable.
+
+      # Ansible facts are data related to your remote systems,
+      # including operating systems, IP addresses, attached filesystems, and more.
+      # You can access this data in the ansible_facts variable.
