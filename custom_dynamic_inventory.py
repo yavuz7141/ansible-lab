@@ -30,5 +30,5 @@ def main():
                }
    print(json.dumps(all_groups)) #json.dumps() function converts a python object into a json string.
 
-if __name__=="__main__":  #import script in a different python script ??not clear
+if __name__=="__main__":  #import script in a different python script ??not c
    main()
